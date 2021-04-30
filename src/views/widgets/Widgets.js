@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {
   CDataTable, CBadge, CCollapse, CButton, CCardBody,
   CCol,
@@ -8,14 +8,45 @@ import {
 } from '@coreui/react'
 import WidgetsBrand from './WidgetsBrand'
 import WidgetsDropdown from './WidgetsDropdown'
-import usersData from "../users/UsersData";
+//import usersData from "../users/UsersData";
+clientData
 import ChartLineSimple from '../charts/ChartLineSimple'
 import ChartBarSimple from '../charts/ChartBarSimple'
 
 import CIcon from '@coreui/icons-react'
 import {DocsLink} from "../../reusable";
+import axios from "axios";
+import clientData from "../../clientdata";
+import usersData from "../users/UsersData";
+
 
 const Widgets = () => {
+
+  let [UsersData, setUserData] = useState([]);
+  let [currentPageSize, setCurrentPageSize] = useState(5);
+  let [currentPage, setCurrentPage] = useState(1);
+  // const onGetClient = async () =>{
+  // const response = await axios.get('/api/client');
+  //     console.log( response )
+  //     setUserData( response.data.users );
+  //   console.log(UsersData);
+  //   // setUserData({list: response});
+  //   // console.log(UsersData);
+  // }
+  // onPaginationChange = (limit) => {
+  //   this.setState({ currentPageSize: limit });
+  //   this.props.dispatch(getVerificationList(this.state.currentPage, limit));
+  // };
+  useEffect(() => {
+    const onGetClient = async () => {
+      const response = await axios.get('/api/client');
+      console.log(response)
+      setUserData(response.data.users);
+      console.log(UsersData);
+    }
+    onGetClient()
+    //console.log(UsersData)
+  }, [])
   const toggleDetails = (index) => {
     const position = details.indexOf(index)
     let newDetails = details.slice()
@@ -28,10 +59,11 @@ const Widgets = () => {
   }
   const [details, setDetails] = useState([])
   const fields = [
-    {key: 'name', _style: {width: '40%'}},
-    'registered',
-    {key: 'role', _style: {width: '20%'}},
-    {key: 'status', _style: {width: '20%'}},
+    {key: 'firstName', label: 'Nom', _style: {width: '20%'}},
+    {key: 'lastName', label: 'Prenom', _style: {width: '20%'}},
+    {key: 'email', _style: {width: '25%'}},
+    {key: 'location', _style: {width: '20%'}},
+    {key: 'phone', label: 'Telephone', _style: {width: '20%'}},
     {
       key: 'show_details',
       label: '',
@@ -65,15 +97,16 @@ const Widgets = () => {
             </CCardHeader>
             <CCardBody>
               <CDataTable
-                items={usersData}
+                items={UsersData}
                 fields={fields}
                 columnFilter
                 tableFilter
                 footer
                 itemsPerPageSelect
-                itemsPerPage={5}
+                itemsPerPage={currentPageSize}
                 hover
                 sorter
+                activePage={currentPage}
                 pagination
                 scopedSlots={{
                   'status':
@@ -95,6 +128,7 @@ const Widgets = () => {
                             size="sm"
                             onClick={() => {
                               toggleDetails(index)
+                              // onGetClient()
                             }}
                           >
                             {details.includes(index) ? 'Hide' : 'Show'}

@@ -5,9 +5,10 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
-  CImg
+  CImg,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import {Link} from "react-router-dom";
 
 const TheHeaderDropdown = () => {
   return (
@@ -26,6 +27,7 @@ const TheHeaderDropdown = () => {
         </div>
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">
+
         <CDropdownItem
           header
           tag="div"
@@ -34,14 +36,19 @@ const TheHeaderDropdown = () => {
         >
           <strong>Account</strong>
         </CDropdownItem>
+
         <CDropdownItem>
           <CIcon name="cil-envelope-open" className="mfe-2"/>
           Messages
           <CBadge color="success" className="mfs-auto">42</CBadge>
         </CDropdownItem>
-        <CDropdownItem>
+
+        <CDropdownItem to='/base/jumbotrons'>
+
           <CIcon name="cil-user" className="mfe-2"/>Profile
+
         </CDropdownItem>
+
         <CDropdownItem>
           <CIcon name="cil-settings" className="mfe-2"/>
           Settings
