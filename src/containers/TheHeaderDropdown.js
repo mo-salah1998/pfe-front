@@ -54,7 +54,7 @@ const TheHeaderDropdown = () => {
           Settings
         </CDropdownItem>
         <CDropdownItem divider/>
-        <CDropdownItem>
+        <CDropdownItem to='/login'>
           <CIcon name="cil-lock-locked" className="mfe-2"/>
           Deconnexion
         </CDropdownItem>

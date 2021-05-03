@@ -20,19 +20,20 @@ import clientData from "../../clientdata";
 import usersData from "../users/UsersData";
 
 
-const Widgets = () => {
+const Clients = () => {
 
   let [UsersData, setUserData] = useState([]);
   let [currentPageSize, setCurrentPageSize] = useState(5);
   let [currentPage, setCurrentPage] = useState(1);
-  // const onGetClient = async () =>{
-  // const response = await axios.get('/api/client');
-  //     console.log( response )
-  //     setUserData( response.data.users );
-  //   console.log(UsersData);
-  //   // setUserData({list: response});
-  //   // console.log(UsersData);
-  // }
+  const onGetClientCliqued = async (id) => {
+    console.log(id)
+    const response = await axios.get('/api/client/' + id);
+    console.log(response)
+    //setUserData( response.data.users );
+    //console.log(UsersData);
+    // setUserData({list: response});
+    // console.log(UsersData);
+  }
   // onPaginationChange = (limit) => {
   //   this.setState({ currentPageSize: limit });
   //   this.props.dispatch(getVerificationList(this.state.currentPage, limit));
@@ -62,7 +63,6 @@ const Widgets = () => {
     {key: 'firstName', label: 'Nom', _style: {width: '20%'}},
     {key: 'lastName', label: 'Prenom', _style: {width: '20%'}},
     {key: 'email', _style: {width: '25%'}},
-    {key: 'location', _style: {width: '20%'}},
     {key: 'phone', label: 'Telephone', _style: {width: '20%'}},
     {
       key: 'show_details',
@@ -93,7 +93,6 @@ const Widgets = () => {
           <CCard>
             <CCardHeader>
               Clients Liste
-              <DocsLink name="CTabs"/>
             </CCardHeader>
             <CCardBody>
               <CDataTable
@@ -128,7 +127,7 @@ const Widgets = () => {
                             size="sm"
                             onClick={() => {
                               toggleDetails(index)
-                              // onGetClient()
+                              onGetClientCliqued(item._id)
                             }}
                           >
                             {details.includes(index) ? 'Hide' : 'Show'}
@@ -165,4 +164,4 @@ const Widgets = () => {
   )
 }
 
-export default Widgets
+export default Clients
