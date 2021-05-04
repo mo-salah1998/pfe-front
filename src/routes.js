@@ -76,7 +76,7 @@ const routes = [
   {path: '/notifications/badges', name: 'Badges', component: Badges},
   {path: '/notifications/modals', name: 'Modals', component: Modals},
   {path: '/notifications/toaster', name: 'Toaster', component: Toaster},
-  {path: '/clients', name: 'clients', component: Clients},
+  {path: '/clients', name: 'Clients', component: Clients},
   {path: '/users', exact: true, name: 'Users', component: Users},
   {path: '/users/:id', exact: true, name: 'User Details', component: User}
 ];

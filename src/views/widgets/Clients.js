@@ -4,20 +4,20 @@ import {
   CCol,
   CRow,
   CCard,
+  CSpinner,
   CCardHeader,
 } from '@coreui/react'
 import WidgetsBrand from './WidgetsBrand'
 import WidgetsDropdown from './WidgetsDropdown'
-//import usersData from "../users/UsersData";
-clientData
 import ChartLineSimple from '../charts/ChartLineSimple'
 import ChartBarSimple from '../charts/ChartBarSimple'
-
 import CIcon from '@coreui/icons-react'
 import {DocsLink} from "../../reusable";
 import axios from "axios";
 import clientData from "../../clientdata";
 import usersData from "../users/UsersData";
+import auth_header from '../../service/authHeader'
+import {useSelector} from "react-redux";
 
 
 const Clients = () => {
@@ -38,12 +38,19 @@ const Clients = () => {
   //   this.setState({ currentPageSize: limit });
   //   this.props.dispatch(getVerificationList(this.state.currentPage, limit));
   // };
+  const Token = useSelector(state => state.auth);
   useEffect(() => {
     const onGetClient = async () => {
-      const response = await axios.get('/api/client');
-      console.log(response)
+      const response = await axios.get('/api/client', {
+          headers: {
+            Authorization: 'Bearer ' + Token.jwtToken
+          }
+        }
+      );
+
+      // console.log(response)
       setUserData(response.data.users);
-      console.log(UsersData);
+      //console.log(UsersData);
     }
     onGetClient()
     //console.log(UsersData)
@@ -88,13 +95,17 @@ const Clients = () => {
   }
   return (
     <>
+
       <CRow>
         <CCol className="mb-4">
           <CCard>
             <CCardHeader>
               Clients Liste
             </CCardHeader>
+
             <CCardBody>
+
+
               <CDataTable
                 items={UsersData}
                 fields={fields}
@@ -107,6 +118,13 @@ const Clients = () => {
                 sorter
                 activePage={currentPage}
                 pagination
+                noItemsViewSlot={<div className="text-center my-5">
+                  <CSpinner className="align-items-center"
+                            color="primary"
+                            style={{width: '3rem', height: '3rem', align: "center"}}
+                  />
+                </div>
+                }
                 scopedSlots={{
                   'status':
                     (item) => (
@@ -156,6 +174,7 @@ const Clients = () => {
                     }
                 }}
               />
+
             </CCardBody>
           </CCard>
         </CCol>
