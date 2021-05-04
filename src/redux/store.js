@@ -1,17 +1,32 @@
-import {createStore} from 'redux'
+import {applyMiddleware, createStore, compose} from 'redux';
+import thunk from 'redux-thunk';
+import allReducers from './reducer/index';
+import storage from 'redux-persist/lib/storage';
+import {createTransform} from 'redux-persist';
+import * as Flatted from 'flatted';
+import {persistStore, persistReducer} from 'redux-persist'
 
-const initialState = {
-  sidebarShow: 'responsive'
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+export const transformCircular = createTransform(
+  (inboundState, key) => Flatted.stringify(inboundState),
+  (outboundState, key) => Flatted.parse(outboundState),
+)
+
+const persistConfig = {
+  key: "igomoku",
+  storage,
+  transforms: [transformCircular],
+  // các state không được lưu trong localStorage
 }
 
-const changeState = (state = initialState, {type, ...rest}) => {
-  switch (type) {
-    case 'set':
-      return {...state, ...rest}
-    default:
-      return state
-  }
-}
+const persistedReducer = persistReducer(persistConfig, allReducers);
 
-const store = createStore(changeState)
-export default store
+const store = createStore(persistedReducer, composeEnhancers(applyMiddleware(thunk)));
+const persistor = persistStore(store);
+
+export default {
+  store,
+  persistor,
+};
+

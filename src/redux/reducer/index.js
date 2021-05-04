@@ -4,7 +4,7 @@ import authReducer from './authReducer';
 // import socketReducer from './socketReducer';
 // import boardListReducer from './boardListReducer';
 // import matchReduecer from './matchReducer';
-// import uiReducer from './uiReducer';
+import uiReducer from './uiReducer';
 // import adminReducer from './adminReducer';
 
 
@@ -14,7 +14,7 @@ const allReducers = combineReducers({
   // onlineUsers: listOnlUserReducer,
   // boardList: boardListReducer,
   // match: matchReduecer,
-  // ui: uiReducer,
+  ui: uiReducer,
   // admin: adminReducer,
 })
 

@@ -19,6 +19,7 @@ import CIcon from '@coreui/icons-react'
 import axios from "axios";
 import {authActions} from "../../../redux/actions/AuthAction";
 import {useToasts} from "react-toast-notifications";
+import {useDispatch} from "react-redux";
 
 const Login = () => {
 
@@ -27,7 +28,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setLoading] = useState(false);
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const history = useHistory();
 
   //const [authData, setAuthData] = useState(false);
@@ -51,7 +52,7 @@ const Login = () => {
             autoMatch: "response.data.account.autoMatch",
           };
           //setAuthData(authData)
-          //dispatch(authActions.signIn(authData));
+          dispatch(authActions.signIn(authData));
           console.log(authData)
 
           //dispatch(authActions.signIn(authData));
