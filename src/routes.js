@@ -29,7 +29,7 @@ const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
 const CoreUIIcons = React.lazy(() => import('./views/icons/coreui-icons/CoreUIIcons'));
 const Flags = React.lazy(() => import('./views/icons/flags/Flags'));
 const Brands = React.lazy(() => import('./views/icons/brands/Brands'));
-const Alerts = React.lazy(() => import('./views/notifications/alerts/Alerts'));
+const Alerts = React.lazy(() => import('./views/notifications/alerts/Parteners'));
 const Badges = React.lazy(() => import('./views/notifications/badges/Badges'));
 const Modals = React.lazy(() => import('./views/notifications/modals/Modals'));
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'));
@@ -71,11 +71,11 @@ const routes = [
   {path: '/icons/coreui-icons', name: 'CoreUI Icons', component: CoreUIIcons},
   {path: '/icons/flags', name: 'Flags', component: Flags},
   {path: '/icons/brands', name: 'Brands', component: Brands},
-  {path: '/notifications', name: 'Notifications', component: Alerts, exact: true},
-  {path: '/notifications/alerts', name: 'Alerts', component: Alerts},
-  {path: '/notifications/badges', name: 'Badges', component: Badges},
-  {path: '/notifications/modals', name: 'Modals', component: Modals},
-  {path: '/notifications/toaster', name: 'Toaster', component: Toaster},
+  {path: '/parteners', name: 'Parteners', component: Alerts, exact: true},
+  {path: '/parteners/alerts', name: 'Alerts', component: Alerts},
+  {path: '/parteners/badges', name: 'Badges', component: Badges},
+  {path: '/parteners/modals', name: 'Modals', component: Modals},
+  {path: '/parteners/toaster', name: 'Toaster', component: Toaster},
   {path: '/clients', name: 'Clients', component: Clients},
   {path: '/users', exact: true, name: 'Users', component: Users},
   {path: '/users/:id', exact: true, name: 'User Details', component: User}

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import CIcon from '@coreui/icons-react'
 import axios from "axios";
 
@@ -48,16 +48,19 @@ const _nav = [
         _tag: 'CSidebarNavItem',
         name: 'Nouveau Messages',
         to: '/buttons/buttons',
+        icon: 'cil-pencil',
       },
       {
         _tag: 'CSidebarNavItem',
-        name: 'Boite de reception',
+        name: 'Inbox',
         to: '/buttons/brand-buttons',
+        icon: 'cil-inbox'
       },
       {
         _tag: 'CSidebarNavItem',
-        name: 'Message envoyer',
+        name: 'Sent',
         to: '/buttons/button-groups',
+        icon: "cil-share-boxed"
       }
 
     ],
@@ -71,7 +74,7 @@ const _nav = [
   {
     _tag: 'CSidebarNavItem',
     name: 'Partenaires',
-    to: '/notifications',
+    to: '/parteners',
     icon: 'cil-people',
   },
   {

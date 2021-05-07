@@ -1,22 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import {
-  CDataTable, CBadge, CCollapse, CButton, CCardBody,
-  CCol,
-  CRow,
+  CBadge,
+  CButton,
   CCard,
-  CSpinner,
+  CCardBody,
   CCardHeader,
+  CCol,
+  CCollapse,
+  CDataTable,
+  CRow,
+  CSpinner,
 } from '@coreui/react'
-import WidgetsBrand from './WidgetsBrand'
-import WidgetsDropdown from './WidgetsDropdown'
-import ChartLineSimple from '../charts/ChartLineSimple'
-import ChartBarSimple from '../charts/ChartBarSimple'
-import CIcon from '@coreui/icons-react'
-import {DocsLink} from "../../reusable";
 import axios from "axios";
-import clientData from "../../clientdata";
-import usersData from "../users/UsersData";
-import auth_header from '../../service/authHeader'
 import {useSelector} from "react-redux";
 
 
@@ -48,7 +43,7 @@ const Clients = () => {
         }
       );
 
-      // console.log(response)
+      //console.log(response)
       setUserData(response.data.users);
       //console.log(UsersData);
     }
@@ -95,7 +90,6 @@ const Clients = () => {
   }
   return (
     <>
-
       <CRow>
         <CCol className="mb-4">
           <CCard>
