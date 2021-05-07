@@ -17,12 +17,44 @@ import {
   CTabPane,
   CTabs,
 } from '@coreui/react'
-import usersData from "../../users/UsersData";
 import axios from "axios";
 import {useSelector} from "react-redux";
 
 const Parteners = () => {
+  const onGetFoodParteners = async () => {
+    //console.log(id)
+    const response = await axios.get('/api/partner/withtype', {
+      params: {
+        type: 'food'
+      }
+    });
+    setFoodPartenersData(response.data.partners);
+    console.log(response)
+  }
+  const onGetServicesParteners = async () => {
+    //console.log(id)
+    const response = await axios.get('/api/partner/withtype', {
+      params: {
+        type: 'service'
+      }
+    });
+    setServicePartenersData(response.data.partners);
+    console.log(response)
+  }
+  const onGetShoppingParteners = async () => {
+    //console.log(id)
+    const response = await axios.get('/api/partner/withtype', {
+      params: {
+        type: 'shopping'
+      }
+    });
+    setShoppingPartenersData(response.data.partners);
+    console.log(response)
+  }
   let [partenersData, setPartenersData] = useState([]);
+  let [foodPartenersData, setFoodPartenersData] = useState([]);
+  let [servicePartenersData, setServicePartenersData] = useState([]);
+  let [ShoppingPartenersData, setShoppingPartenersData] = useState([]);
 
   const Token = useSelector(state => state.auth);
 
@@ -58,7 +90,7 @@ const Parteners = () => {
 
     {key: 'rating', label: 'Rating', _style: {width: '20%'}},
     {key: 'email', _style: {width: '25%'}},
-    {key: 'domain', label: 'Domain', _style: {width: '20%'}},
+    {key: 'domain.type', label: 'Domain', _style: {width: '20%'}},
     {
       key: 'show_details',
       label: '',
@@ -88,7 +120,6 @@ const Parteners = () => {
           <CCard>
             <CCardHeader>
               Partenaires
-
             </CCardHeader>
             <CCardBody>
               <CTabs>
@@ -99,17 +130,17 @@ const Parteners = () => {
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
-                    <CNavLink>
+                    <CNavLink onClick={onGetFoodParteners}>
                       Food
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
-                    <CNavLink>
+                    <CNavLink onClick={onGetServicesParteners}>
                       Service
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
-                    <CNavLink>
+                    <CNavLink onClick={onGetShoppingParteners}>
                       Shopping
                     </CNavLink>
                   </CNavItem>
@@ -159,7 +190,7 @@ const Parteners = () => {
                                     </td>
 
                                   ),
-                                'domain':
+                                'domain.type':
                                   (item) => (
                                     <td>
                                       <CBadge color={getBadge(item.domain.type)}>
@@ -221,7 +252,7 @@ const Parteners = () => {
                           </CCardHeader>
                           <CCardBody>
                             <CDataTable
-                              items={usersData}
+                              items={foodPartenersData}
                               fields={fields}
                               columnFilter
                               tableFilter
@@ -231,14 +262,37 @@ const Parteners = () => {
                               hover
                               sorter
                               pagination
+                              border={false}
+                              noItemsViewSlot={
+                                <div className="text-center my-5">
+                                  <CSpinner className="align-items-center"
+                                            color="primary"
+                                            style={{width: '3rem', height: '3rem', align: "center"}}
+                                  />
+                                </div>
+                              }
                               scopedSlots={{
-                                'status':
+                                'rating':
                                   (item) => (
                                     <td>
-                                      <CBadge color={getBadge(item.status)}>
-                                        {item.status}
+                                      {item.rating.toFixed(2)}
+                                    </td>
+                                  ),
+                                'joined':
+                                  (item) => (
+                                    <td>
+                                      {item.joined.slice(0, 10)}
+                                    </td>
+
+                                  ),
+                                'domain.type':
+                                  (item) => (
+                                    <td>
+                                      <CBadge color={getBadge(item.domain.type)}>
+                                        {item.domain.type}
                                       </CBadge>
                                     </td>
+
                                   ),
                                 'show_details':
                                   (item, index) => {
@@ -293,7 +347,7 @@ const Parteners = () => {
                           </CCardHeader>
                           <CCardBody>
                             <CDataTable
-                              items={usersData}
+                              items={servicePartenersData}
                               fields={fields}
                               columnFilter
                               tableFilter
@@ -303,14 +357,36 @@ const Parteners = () => {
                               hover
                               sorter
                               pagination
+                              noItemsViewSlot={
+                                <div className="text-center my-5">
+                                  <CSpinner className="align-items-center"
+                                            color="primary"
+                                            style={{width: '3rem', height: '3rem', align: "center"}}
+                                  />
+                                </div>
+                              }
                               scopedSlots={{
-                                'status':
+                                'rating':
                                   (item) => (
                                     <td>
-                                      <CBadge color={getBadge(item.status)}>
-                                        {item.status}
+                                      {item.rating.toFixed(2)}
+                                    </td>
+                                  ),
+                                'joined':
+                                  (item) => (
+                                    <td>
+                                      {item.joined.slice(0, 10)}
+                                    </td>
+
+                                  ),
+                                'domain.type':
+                                  (item) => (
+                                    <td>
+                                      <CBadge color={getBadge(item.domain.type)}>
+                                        {item.domain.type}
                                       </CBadge>
                                     </td>
+
                                   ),
                                 'show_details':
                                   (item, index) => {
@@ -365,7 +441,7 @@ const Parteners = () => {
                           </CCardHeader>
                           <CCardBody>
                             <CDataTable
-                              items={usersData}
+                              items={ShoppingPartenersData}
                               fields={fields}
                               columnFilter
                               tableFilter
@@ -375,14 +451,36 @@ const Parteners = () => {
                               hover
                               sorter
                               pagination
+                              noItemsViewSlot={
+                                <div className="text-center my-5">
+                                  <CSpinner className="align-items-center"
+                                            color="primary"
+                                            style={{width: '3rem', height: '3rem', align: "center"}}
+                                  />
+                                </div>
+                              }
                               scopedSlots={{
-                                'status':
+                                'rating':
                                   (item) => (
                                     <td>
-                                      <CBadge color={getBadge(item.status)}>
-                                        {item.status}
+                                      {item.rating.toFixed(2)}
+                                    </td>
+                                  ),
+                                'joined':
+                                  (item) => (
+                                    <td>
+                                      {item.joined.slice(0, 10)}
+                                    </td>
+
+                                  ),
+                                'domain.type':
+                                  (item) => (
+                                    <td>
+                                      <CBadge color={getBadge(item.domain.type)}>
+                                        {item.domain.type}
                                       </CBadge>
                                     </td>
+
                                   ),
                                 'show_details':
                                   (item, index) => {
