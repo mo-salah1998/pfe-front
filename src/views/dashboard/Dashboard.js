@@ -1,47 +1,46 @@
-import React, {lazy} from 'react'
-import {CBadge, CButton, CCallout, CCard, CCardBody, CCardHeader, CCol, CProgress, CRow} from '@coreui/react'
+import React, {lazy, useEffect, useState} from 'react'
+import {CBadge, CCard, CCardBody, CCardHeader, CCol, CProgress, CRow} from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import axios from "axios";
 
 const WidgetsDropdown = lazy(() => import('../clients/WidgetsDropdown.js'))
 const WidgetsBrand = lazy(() => import('../clients/WidgetsBrand.js'))
 
 const Dashboard = () => {
+  let [dashboardData, setDashboardData] = useState([]);
+
+
+  useEffect(() => {
+    const getInfo = async () => {
+      const response = await axios.get('/api/dashbord', {
+          headers: {
+            //Authorization: 'Bearer ' + Token.jwtToken
+          }
+        }
+      );
+      console.log(response)
+      setDashboardData(response.data);
+      //console.log(partenersData)
+    }
+    getInfo()
+  }, [])
   return (
     <>
-      <WidgetsDropdown/>
+      <WidgetsDropdown data={dashboardData}/>
       <CRow>
         <CCol>
           <CCard>
             <CCardHeader>
-              Traffic {' & '} Sales
+              Trafic {' & '} Ventes
             </CCardHeader>
             <CCardBody>
               <CRow>
                 <CCol xs="12" md="6" xl="6">
 
-                  <CRow>
-                    <CCol sm="6">
-                      <CCallout color="info">
-                        <small className="text-muted">New Clients</small>
-                        <br/>
-                        <strong className="h4">9,123</strong>
-                      </CCallout>
-                    </CCol>
-                    <CCol sm="6">
-                      <CCallout color="danger">
-                        <small className="text-muted">Recurring Clients</small>
-                        <br/>
-                        <strong className="h4">22,643</strong>
-                      </CCallout>
-                    </CCol>
-                  </CRow>
-
-                  <hr className="mt-0"/>
-
                   <div className="progress-group mb-4">
                     <div className="progress-group-prepend">
                       <span className="progress-group-text">
-                        Monday
+                        Lundi
                       </span>
                     </div>
                     <div className="progress-group-bars">
@@ -52,7 +51,7 @@ const Dashboard = () => {
                   <div className="progress-group mb-4">
                     <div className="progress-group-prepend">
                       <span className="progress-group-text">
-                      Tuesday
+                      Mardi
                       </span>
                     </div>
                     <div className="progress-group-bars">
@@ -63,7 +62,7 @@ const Dashboard = () => {
                   <div className="progress-group mb-4">
                     <div className="progress-group-prepend">
                       <span className="progress-group-text">
-                      Wednesday
+                      Mercredi
                       </span>
                     </div>
                     <div className="progress-group-bars">
@@ -74,7 +73,7 @@ const Dashboard = () => {
                   <div className="progress-group mb-4">
                     <div className="progress-group-prepend">
                       <span className="progress-group-text">
-                      Thursday
+                      jeudi
                       </span>
                     </div>
                     <div className="progress-group-bars">
@@ -85,7 +84,7 @@ const Dashboard = () => {
                   <div className="progress-group mb-4">
                     <div className="progress-group-prepend">
                       <span className="progress-group-text">
-                      Friday
+                      vendredi
                       </span>
                     </div>
                     <div className="progress-group-bars">
@@ -96,7 +95,7 @@ const Dashboard = () => {
                   <div className="progress-group mb-4">
                     <div className="progress-group-prepend">
                       <span className="progress-group-text">
-                      Saturday
+                      Samedi
                       </span>
                     </div>
                     <div className="progress-group-bars">
@@ -107,7 +106,7 @@ const Dashboard = () => {
                   <div className="progress-group mb-4">
                     <div className="progress-group-prepend">
                       <span className="progress-group-text">
-                      Sunday
+                      Dimanche
                       </span>
                     </div>
                     <div className="progress-group-bars">
@@ -118,54 +117,19 @@ const Dashboard = () => {
                   <div className="legend text-center">
                     <small>
                       <sup className="px-1"><CBadge shape="pill" color="info">&nbsp;</CBadge></sup>
-                      New clients
+                      Nouveaux clients
                       &nbsp;
                       <sup className="px-1"><CBadge shape="pill" color="danger">&nbsp;</CBadge></sup>
-                      Recurring clients
+                      Clients récurrents
                     </small>
                   </div>
                 </CCol>
 
                 <CCol xs="12" md="6" xl="6">
 
-                  <CRow>
-                    <CCol sm="6">
-                      <CCallout color="warning">
-                        <small className="text-muted">Pageviews</small>
-                        <br/>
-                        <strong className="h4">78,623</strong>
-                      </CCallout>
-                    </CCol>
-                    <CCol sm="6">
-                      <CCallout color="success">
-                        <small className="text-muted">Organic</small>
-                        <br/>
-                        <strong className="h4">49,123</strong>
-                      </CCallout>
-                    </CCol>
-                  </CRow>
 
-                  <hr className="mt-0"/>
-
-                  <div className="progress-group mb-4">
-                    <div className="progress-group-header">
-                      <CIcon className="progress-group-icon" name="cil-user"/>
-                      <span className="title">Male</span>
-                      <span className="ml-auto font-weight-bold">43%</span>
-                    </div>
-                    <div className="progress-group-bars">
-                      <CProgress className="progress-xs" color="warning" value="43"/>
-                    </div>
-                  </div>
                   <div className="progress-group mb-5">
-                    <div className="progress-group-header">
-                      <CIcon className="progress-group-icon" name="cil-user-female"/>
-                      <span className="title">Female</span>
-                      <span className="ml-auto font-weight-bold">37%</span>
-                    </div>
-                    <div className="progress-group-bars">
-                      <CProgress className="progress-xs" color="warning" value="37"/>
-                    </div>
+
                   </div>
                   <div className="progress-group">
                     <div className="progress-group-header">
@@ -210,11 +174,7 @@ const Dashboard = () => {
                       <CProgress className="progress-xs" color="success" value="8"/>
                     </div>
                   </div>
-                  <div className="divider text-center">
-                    <CButton color="link" size="sm" className="text-muted">
-                      <CIcon name="cil-options"/>
-                    </CButton>
-                  </div>
+
 
                 </CCol>
               </CRow>
@@ -225,7 +185,7 @@ const Dashboard = () => {
           </CCard>
         </CCol>
       </CRow>
-      <WidgetsBrand withCharts/>
+      <WidgetsBrand withCharts data={dashboardData}/>
 
 
     </>

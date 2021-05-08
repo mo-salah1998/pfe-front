@@ -1,15 +1,5 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
-import axios from "axios";
-
-//State = {list: []};
-const onGetClient = async () => {
-  const response = await axios.get('/api/client');
-  // console.log(response);
-  let clientData;
-  clientData = response.data;
-  console.log(clientData)
-}
 
 const _nav = [
   {
@@ -28,8 +18,10 @@ const _nav = [
   {
     _tag: 'CSidebarNavItem',
     name: 'L\'historique des Actions',
-    to: '/theme/typography',
     icon: 'cil-pencil',
+    'disabled': true,
+    addLinkClass: 'c-disabled',
+
   },
 
   {
@@ -40,13 +32,13 @@ const _nav = [
   },
   {
     _tag: 'CSidebarNavDropdown',
-    name: 'Messages',
+    name: 'Email',
     route: '/buttons',
     icon: 'cil-cursor',
     _children: [
       {
         _tag: 'CSidebarNavItem',
-        name: 'Nouveau Messages',
+        name: 'Nouveau Email',
         to: '/buttons/buttons',
         icon: 'cil-pencil',
       },
@@ -82,9 +74,9 @@ const _nav = [
     name: 'Clients',
     to: '/clients',
     icon: 'cil-people',
-    onClick: onGetClient,
 
   },
+
   {
     _tag: 'CSidebarNavDivider'
   },

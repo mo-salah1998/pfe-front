@@ -4,19 +4,19 @@ import {CCol, CRow, CWidgetBrand} from '@coreui/react';
 import CIcon from '@coreui/icons-react';
 import ChartLineSimple from '../charts/ChartLineSimple';
 
-const WidgetsBrand = ({withCharts}) => {
+const WidgetsBrand = ({withCharts, data}) => {
 
   // render
-
+  //console.log(data.fbPageLikes)
   return withCharts ?
     <CRow>
-      <CCol sm="6" lg="3">
+      <CCol sm="6" lg="4">
         <CWidgetBrand
           color="facebook"
-          rightHeader="89k"
-          rightFooter="friends"
-          leftHeader="459"
-          leftFooter="feeds"
+          rightHeader={data.fbPageLikes}
+          rightFooter="like"
+          leftHeader={data.fbPageabonner}
+          leftFooter="abonner"
         >
           <CIcon
             name="cib-facebook"
@@ -33,13 +33,13 @@ const WidgetsBrand = ({withCharts}) => {
         </CWidgetBrand>
       </CCol>
 
-      <CCol sm="6" lg="3">
+      <CCol sm="6" lg="4">
         <CWidgetBrand
           color="twitter"
-          rightHeader="973k"
+          rightHeader={data.instagrameFollowrs}
           rightFooter="followers"
-          leftHeader="1.792"
-          leftFooter="tweets"
+          leftHeader={data.instagramePublications}
+          leftFooter="publications"
         >
           <CIcon
             name="cib-instagram"
@@ -56,18 +56,18 @@ const WidgetsBrand = ({withCharts}) => {
         </CWidgetBrand>
       </CCol>
 
-      <CCol sm="6" lg="3">
+      <CCol sm="6" lg="4">
         <CWidgetBrand
           color="linkedin"
-          rightHeader="500+"
-          rightFooter="contracts"
-          leftHeader="292"
-          leftFooter="feeds"
+          rightHeader={data.emailNonLus}
+          rightFooter="Email non lus"
+          leftHeader={data.emailresponce}
+          leftFooter="response"
         >
           <CIcon
-            name="cib-linkedin"
+            name="cil-envelope-closed"
             height="52"
-            className="my-4"
+            className="my-4 "
           />
           <ChartLineSimple
             className="position-absolute w-100 h-100"
@@ -79,28 +79,7 @@ const WidgetsBrand = ({withCharts}) => {
         </CWidgetBrand>
       </CCol>
 
-      <CCol sm="6" lg="3">
-        <CWidgetBrand
-          rightHeader="12"
-          rightFooter="events"
-          leftHeader="4"
-          leftFooter="meetings"
-          color="gradient-warning"
-        >
-          <CIcon
-            name="cil-calendar"
-            height="52"
-            className="my-4"
-          />
-          <ChartLineSimple
-            className="position-absolute w-100 h-100"
-            backgroundColor="rgba(255,255,255,.1)"
-            dataPoints={[35, 23, 56, 22, 97, 23, 64]}
-            label="Followers"
-            labels="months"
-          />
-        </CWidgetBrand>
-      </CCol>
+
     </CRow> :
 
     <CRow>
