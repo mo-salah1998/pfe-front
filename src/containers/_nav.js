@@ -58,10 +58,37 @@ const _nav = [
     ],
   },
   {
-    _tag: 'CSidebarNavItem',
+    _tag: 'CSidebarNavDropdown',
     name: 'Order',
-    to: '/charts',
-    icon: 'cil-basket'
+    route: '/icons',
+    icon: 'cil-basket',
+    _children: [
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'All orders',
+        to: '/icons/coreui-icons',
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'En cour de traitement',
+        to: '/icons/coreui-icons',
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Enlevé',
+        to: '/icons/flags',
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Livrée',
+        to: '/icons/brands',
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Annuler',
+        to: '/icons/brands',
+      },
+    ],
   },
   {
     _tag: 'CSidebarNavItem',
