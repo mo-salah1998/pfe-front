@@ -1,27 +1,22 @@
 import React from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {
+  CBreadcrumbRouter,
   CHeader,
-  CToggler,
   CHeaderBrand,
   CHeaderNav,
   CHeaderNavItem,
   CHeaderNavLink,
+  CLink,
   CSubheader,
-  CBreadcrumbRouter,
-  CLink
+  CToggler
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
 // routes config
 import routes from '../routes'
 
-import {
-  TheHeaderDropdown,
-  TheHeaderDropdownMssg,
-  TheHeaderDropdownNotif,
-  TheHeaderDropdownTasks
-} from './index'
+import {TheHeaderDropdown} from './index'
 
 const TheHeader = () => {
   const dispatch = useDispatch()
@@ -57,6 +52,7 @@ const TheHeader = () => {
         <CHeaderNavItem className="px-3">
           <CHeaderNavLink to="/dashboard">Dashboard</CHeaderNavLink>
         </CHeaderNavItem>
+
       </CHeaderNav>
 
       <CHeaderNav className="px-3">

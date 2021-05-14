@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   CButton,
-  CForm,
   CCard,
   CCardBody,
   CCardHeader,
@@ -12,11 +11,12 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
-  CRow,
+  CForm,
   CFormGroup,
-  CLabel,
   CInput,
-  CInputCheckbox
+  CInputCheckbox,
+  CLabel,
+  CRow
 } from '@coreui/react'
 import {DocsLink} from 'src/reusable'
 

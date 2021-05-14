@@ -49,7 +49,7 @@ const Parteners = () => {
       }
     });
     setShoppingPartenersData(response.data.partners);
-    console.log(response)
+    //console.log(response)
   }
   let [partenersData, setPartenersData] = useState([]);
   let [foodPartenersData, setFoodPartenersData] = useState([]);

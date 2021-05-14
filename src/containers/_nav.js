@@ -33,25 +33,25 @@ const _nav = [
   {
     _tag: 'CSidebarNavDropdown',
     name: 'Email',
-    route: '/buttons',
+    route: '/email',
     icon: 'cil-cursor',
     _children: [
       {
         _tag: 'CSidebarNavItem',
         name: 'Nouveau Email',
-        to: '/buttons/buttons',
+        to: '/email/email',
         icon: 'cil-pencil',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Inbox',
-        to: '/buttons/brand-buttons',
+        to: '/email/brand-email',
         icon: 'cil-inbox'
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Sent',
-        to: '/buttons/button-groups',
+        to: '/email/button-groups',
         icon: "cil-share-boxed"
       }
 
@@ -60,33 +60,33 @@ const _nav = [
   {
     _tag: 'CSidebarNavDropdown',
     name: 'Order',
-    route: '/icons',
+    route: '/order',
     icon: 'cil-basket',
     _children: [
       {
         _tag: 'CSidebarNavItem',
         name: 'All orders',
-        to: '/icons/coreui-icons',
+        to: '/order/all',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'En cour de traitement',
-        to: '/icons/coreui-icons',
+        to: '/order/enCourDeTraitement',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Enlevé',
-        to: '/icons/flags',
+        to: '/order/enlevé',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Livrée',
-        to: '/icons/brands',
+        to: '/order/Livrée',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Annuler',
-        to: '/icons/brands',
+        to: '/order/annuler',
       },
     ],
   },

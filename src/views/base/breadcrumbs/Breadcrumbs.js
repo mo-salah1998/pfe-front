@@ -1,100 +1,109 @@
 import React from 'react'
-import {
-  CBreadcrumb,
-  CBreadcrumbItem,
-  CBreadcrumbRouter,
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CLink,
-  CCol,
-  CRow, CCardGroup
-} from '@coreui/react'
-import {DocsLink} from 'src/reusable'
-import routes from '../../../routes'
-import {CChartBar, CChartDoughnut, CChartLine, CChartPie, CChartPolarArea, CChartRadar} from "@coreui/react-chartjs";
+import {CCard, CCardBody, CCardGroup, CCardHeader, CCol, CRow, CWidgetProgressIcon} from '@coreui/react'
+import CIcon from '@coreui/icons-react'
+import {CChartBar, CChartPie} from "@coreui/react-chartjs";
+
 
 const Breadcrumbs = () => {
-  return (
-    <CCardGroup columns className="cols-2">
+  return (<>
       <CCard>
         <CCardHeader>
           Bar Chart
-          <DocsLink href="http://www.chartjs.org"/>
+
         </CCardHeader>
         <CCardBody>
-          <CChartBar
-            datasets={[
-              {
-                label: 'GitHub Commits',
-                backgroundColor: '#f87979',
-                data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
-              }
-            ]}
-            labels="months"
-            options={{
-              tooltips: {
-                enabled: true
-              }
-            }}
+          <CRow>
+            <CCol sm="6" md="2">
+              <CWidgetProgressIcon
+                header="87.500"
+                text="Visitors"
+                color="gradient-info"
+                inverse
+              >
+                <CIcon name="cil-people" height="36"/>
+              </CWidgetProgressIcon>
+            </CCol>
+            <CCol sm="6" md="2">
+              <CWidgetProgressIcon
+                header="385"
+                text="New Clients"
+                color="gradient-success"
+                inverse
+              >
+                <CIcon name="cil-userFollow" height="36"/>
+              </CWidgetProgressIcon>
+            </CCol>
+            <CCol sm="6" md="2">
+              <CWidgetProgressIcon
+                header="1238"
+                text="Products sold"
+                color="gradient-warning"
+                inverse
+              >
+                <CIcon name="cil-basket" height="36"/>
+              </CWidgetProgressIcon>
+            </CCol>
+            <CCol sm="6" md="2">
+              <CWidgetProgressIcon
+                header="28%"
+                text="Returning Visitors"
+                color="gradient-primary"
+                inverse
+              >
+                <CIcon name="cil-chartPie" height="36"/>
+              </CWidgetProgressIcon>
+            </CCol>
+            <CCol sm="6" md="2">
+              <CWidgetProgressIcon
+                header="5:34:11"
+                text="Avg. Time"
+                color="gradient-danger"
+                inverse
+              >
+                <CIcon name="cil-speedometer" height="36"/>
+              </CWidgetProgressIcon>
+            </CCol>
+            <CCol sm="6" md="2">
+              <CWidgetProgressIcon
+                header="972"
+                text="comments"
+                color="gradient-info"
+                inverse
+              >
+                <CIcon name="cil-speech" height="36"/>
+              </CWidgetProgressIcon>
+            </CCol>
+          </CRow>
+
+        </CCardBody>
+      </CCard>
+      <CCardGroup columns className="cols-2">
+        <CCard>
+          <CCardHeader>
+            Bar Chart
+
+          </CCardHeader>
+          <CCardBody>
+
+            <CChartBar
+              datasets={[
+                {
+                  label: 'GitHub Commits',
+                  backgroundColor: '#f87979',
+                  data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+                }
+              ]}
+              labels="indexes"
+              options={{
+                tooltips: {
+                  enabled: true
+                }
+              }}
           />
         </CCardBody>
       </CCard>
 
-      <CCard>
-        <CCardHeader>
-          Doughnut Chart
-        </CCardHeader>
-        <CCardBody>
-          <CChartDoughnut
-            datasets={[
-              {
-                backgroundColor: [
-                  '#41B883',
-                  '#E46651',
-                  '#00D8FF',
-                  '#DD1B16'
-                ],
-                data: [40, 20, 80, 10]
-              }
-            ]}
-            labels={['VueJs', 'EmberJs', 'ReactJs', 'AngularJs']}
-            options={{
-              tooltips: {
-                enabled: true
-              }
-            }}
-          />
-        </CCardBody>
-      </CCard>
 
-      <CCard>
-        <CCardHeader>
-          Line Chart
-        </CCardHeader>
-        <CCardBody>
-          <CChartLine
-            datasets={[
-              {
-                label: 'Data One',
-                backgroundColor: 'rgb(228,102,81,0.9)',
-                data: [30, 39, 10, 50, 30, 70, 35]
-              },
-              {
-                label: 'Data Two',
-                backgroundColor: 'rgb(0,216,255,0.9)',
-                data: [39, 80, 40, 35, 40, 20, 45]
-              }
-            ]}
-            options={{
-              tooltips: {
-                enabled: true
-              }
-            }}
-            labels="months"
-          />
-        </CCardBody>
-      </CCard>
 
       <CCard>
         <CCardHeader>
@@ -123,90 +132,9 @@ const Breadcrumbs = () => {
         </CCardBody>
       </CCard>
 
-      <CCard>
-        <CCardHeader>
-          Polar Area Chart
-        </CCardHeader>
-        <CCardBody>
-          <CChartPolarArea
-            datasets={[
-              {
-                label: 'My First dataset',
-                backgroundColor: 'rgba(179,181,198,0.2)',
-                pointBackgroundColor: 'rgba(179,181,198,1)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: 'rgba(179,181,198,1)',
-                pointHoverBorderColor: 'rgba(179,181,198,1)',
-                data: [65, 59, 90, 81, 56, 55, 40]
-              },
-              {
-                label: 'My Second dataset',
-                backgroundColor: 'rgba(255,99,132,0.2)',
-                pointBackgroundColor: 'rgba(255,99,132,1)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: 'rgba(255,99,132,1)',
-                pointHoverBorderColor: 'rgba(255,99,132,1)',
-                data: [28, 48, 40, 19, 96, 27, 100]
-              }
-            ]}
-            options={{
-              aspectRatio: 1.5,
-              tooltips: {
-                enabled: true
-              }
-            }}
-            labels={[
-              'Eating', 'Drinking', 'Sleeping', 'Designing',
-              'Coding', 'Cycling', 'Running'
-            ]}
-          />
-        </CCardBody>
-      </CCard>
 
-      <CCard>
-        <CCardHeader>
-          Radar Chart
-        </CCardHeader>
-        <CCardBody>
-          <CChartRadar
-            datasets={[
-              {
-                label: '2019',
-                backgroundColor: 'rgba(179,181,198,0.2)',
-                borderColor: 'rgba(179,181,198,1)',
-                pointBackgroundColor: 'rgba(179,181,198,1)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgba(179,181,198,1)',
-                tooltipLabelColor: 'rgba(179,181,198,1)',
-                data: [65, 59, 90, 81, 56, 55, 40]
-              },
-              {
-                label: '2020',
-                backgroundColor: 'rgba(255,99,132,0.2)',
-                borderColor: 'rgba(255,99,132,1)',
-                pointBackgroundColor: 'rgba(255,99,132,1)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgba(255,99,132,1)',
-                tooltipLabelColor: 'rgba(255,99,132,1)',
-                data: [28, 48, 40, 19, 96, 27, 100]
-              }
-            ]}
-            options={{
-              aspectRatio: 1.5,
-              tooltips: {
-                enabled: true
-              }
-            }}
-            labels={[
-              'Eating', 'Drinking', 'Sleeping', 'Designing',
-              'Coding', 'Cycling', 'Running'
-            ]}
-          />
-        </CCardBody>
-      </CCard>
     </CCardGroup>
+    </>
   )
 }
 

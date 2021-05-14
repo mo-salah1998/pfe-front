@@ -1,20 +1,23 @@
-import React, {useEffect, useState} from 'react'
-import {CButton, CCard, CCardBody, CCardHeader, CCol, CCollapse, CDataTable, CRow, CSpinner} from '@coreui/react'
+import React, {useEffect, useState} from "react";
 import axios from "axios";
+import {CButton, CCard, CCardBody, CCardHeader, CCol, CCollapse, CDataTable, CRow} from "@coreui/react";
 
-const CoreUIIcons = () => {
+const orderAnnuler = () => {
 
   let [OrderData, setOrderData] = useState([]);
   useEffect(() => {
     const onGetClient = async () => {
-      const response = await axios.get('/api/order', {
+      const response = await axios.get('/api/order/type', {
+          params: {
+            status: 'annuler'
+          },
           headers: {
             //Authorization: 'Bearer ' + Token.jwtToken
           }
         }
       );
 
-      console.log(response)
+      // console.log(response)
       setOrderData(response.data.orders);
 
     }
@@ -36,7 +39,6 @@ const CoreUIIcons = () => {
     {key: '_id', label: 'Commande id', _style: {width: '20%'}},
     {key: 'client._id', label: 'Client', _style: {width: '20%'}},
     {key: 'partner.partnerName', label: 'livreur', _style: {width: '20%'}},
-
     {key: 'price', label: 'Prix', _style: {width: '20%'}},
 
     {
@@ -45,7 +47,8 @@ const CoreUIIcons = () => {
       _style: {width: '1%'},
       sorter: false,
       filter: false
-    }
+    },
+
   ]
   const getBadge = status => {
     switch (status) {
@@ -87,13 +90,7 @@ const CoreUIIcons = () => {
                         hover
                         sorter
                         pagination
-                        noItemsViewSlot={<div className="text-center my-5">
-                          <CSpinner className="align-items-center"
-                                    color="primary"
-                                    style={{width: '3rem', height: '3rem', align: "center"}}
-                          />
-                        </div>
-                        }
+
                         scopedSlots={{
                           'client._id':
                             (item) => (
@@ -141,6 +138,7 @@ const CoreUIIcons = () => {
                                         <th className="col">produit</th>
                                         <th className="col">prix</th>
                                         <th className="col">quantiter</th>
+
                                       </tr>
                                       </thead>
                                       <tbody>
@@ -181,5 +179,4 @@ const CoreUIIcons = () => {
     </>
   )
 }
-
-export default CoreUIIcons
+export default orderAnnuler

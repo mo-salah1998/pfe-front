@@ -1,4 +1,6 @@
 import React from 'react';
+import orderAnnuler from "./views/order/orderAnnuler";
+import enCourDeTraitement from "./views/order/enCourDeTraitement";
 
 const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'));
 const Tables = React.lazy(() => import('./views/base/tables/Tables'));
@@ -20,15 +22,15 @@ const Switches = React.lazy(() => import('./views/base/switches/Switches'));
 
 const Tabs = React.lazy(() => import('./views/base/tabs/Tabs'));
 const Tooltips = React.lazy(() => import('./views/base/tooltips/Tooltips'));
-const BrandButtons = React.lazy(() => import('./views/buttons/brand-buttons/BrandButtons'));
-const ButtonDropdowns = React.lazy(() => import('./views/buttons/button-dropdowns/ButtonDropdowns'));
-const ButtonGroups = React.lazy(() => import('./views/buttons/button-groups/ButtonGroups'));
-const Buttons = React.lazy(() => import('./views/buttons/buttons/Buttons'));
+const BrandButtons = React.lazy(() => import('./views/email/brand-buttons/BrandButtons'));
+const ButtonDropdowns = React.lazy(() => import('./views/email/button-dropdowns/ButtonDropdowns'));
+const ButtonGroups = React.lazy(() => import('./views/email/button-groups/ButtonGroups'));
+const Buttons = React.lazy(() => import('./views/email/buttons/Buttons'));
 const Charts = React.lazy(() => import('./views/charts/Charts'));
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
-const CoreUIIcons = React.lazy(() => import('./views/icons/coreui-icons/CoreUIIcons'));
-const Flags = React.lazy(() => import('./views/icons/flags/Flags'));
-const Brands = React.lazy(() => import('./views/icons/brands/Brands'));
+const CoreUIIcons = React.lazy(() => import('./views/order/All-orders/CoreUIIcons'));
+const Flags = React.lazy(() => import('./views/order/Livrée/Flags'));
+const Brands = React.lazy(() => import('./views/order/enlevé/Brands'));
 const Alerts = React.lazy(() => import('./views/notifications/alerts/Parteners'));
 const Badges = React.lazy(() => import('./views/notifications/badges/Badges'));
 const Modals = React.lazy(() => import('./views/notifications/modals/Modals'));
@@ -61,22 +63,29 @@ const routes = [
   {path: '/base/tables', name: 'Tables', component: Tables},
   {path: '/base/tabs', name: 'Tabs', component: Tabs},
   {path: '/base/tooltips', name: 'Tooltips', component: Tooltips},
-  {path: '/buttons', name: 'Buttons', component: Buttons, exact: true},
-  {path: '/buttons/buttons', name: 'Buttons', component: Buttons},
-  {path: '/buttons/button-dropdowns', name: 'Dropdowns', component: ButtonDropdowns},
-  {path: '/buttons/button-groups', name: 'Button Groups', component: ButtonGroups},
-  {path: '/buttons/brand-buttons', name: 'Brand Buttons', component: BrandButtons},
+  {path: '/email', name: 'Buttons', component: Buttons, exact: true},
+  {path: '/email/email', name: 'Buttons', component: Buttons},
+  {path: '/email/button-dropdowns', name: 'Dropdowns', component: ButtonDropdowns},
+  {path: '/email/button-groups', name: 'Button Groups', component: ButtonGroups},
+  {path: '/email/brand-email', name: 'Brand Buttons', component: BrandButtons},
   {path: '/charts', name: 'Charts', component: Charts},
-  {path: '/icons', exact: true, name: 'Icons', component: CoreUIIcons},
-  {path: '/icons/coreui-icons', name: 'CoreUI Icons', component: CoreUIIcons},
-  {path: '/icons/flags', name: 'Flags', component: Flags},
-  {path: '/icons/brands', name: 'Brands', component: Brands},
+
+  {path: '/order', exact: true, name: 'Order', component: CoreUIIcons},
+  {path: '/order/all', name: 'All Orders', component: CoreUIIcons},
+  //{path: '/order/Livrée', name: 'Flags', component: Flags},
+  {path: '/order/enlevé', name: 'Enlevé', component: Brands},
+  {path: '/order/annuler', name: 'Anuler', component: orderAnnuler},
+  {path: '/order/enCourDeTraitement', name: 'Traitement', component: enCourDeTraitement},
+  {path: '/order/Livrée', name: 'Livrée', component: Flags},
+
   {path: '/parteners', name: 'Parteners', component: Alerts, exact: true},
   {path: '/parteners/alerts', name: 'Alerts', component: Alerts},
   {path: '/parteners/badges', name: 'Badges', component: Badges},
   {path: '/parteners/modals', name: 'Modals', component: Modals},
   {path: '/parteners/toaster', name: 'Toaster', component: Toaster},
+
   {path: '/clients', name: 'Clients', component: Clients},
+
   {path: '/users', exact: true, name: 'Users', component: Users},
   {path: '/users/:id', exact: true, name: 'User Details', component: User}
 ];

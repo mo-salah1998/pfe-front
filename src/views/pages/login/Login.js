@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import {
   CButton,
   CCard,
@@ -35,13 +35,11 @@ const Login = () => {
   function handleSubmit(event) {
     event.preventDefault();
     setLoading(true);
-    axios
-      .post("api/auth/login", {
-        email: email,
-        password: password,
-        //permission: 0, // admin (0-admin, 1-user)
-        //socketID: socket.id,
-      })
+    axios.post("api/auth/login", {
+      email: email,
+      password: password,
+
+    })
       .then(function (response) {
         setLoading(false);
         if (response.status === 200) {
