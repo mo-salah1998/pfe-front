@@ -1,21 +1,21 @@
 import React, {useState} from 'react'
 import {
+  CButton,
   CCard,
-  CCardHeader,
   CCardBody,
-  CToast,
-  CToastBody,
-  CToastHeader,
-  CToaster,
+  CCardHeader,
+  CCol,
+  CContainer,
   CForm,
+  CFormGroup,
   CInput,
   CInputCheckbox,
-  CButton,
-  CContainer,
+  CLabel,
   CRow,
-  CCol,
-  CFormGroup,
-  CLabel
+  CToast,
+  CToastBody,
+  CToaster,
+  CToastHeader
 } from '@coreui/react'
 import {DocsLink} from 'src/reusable'
 

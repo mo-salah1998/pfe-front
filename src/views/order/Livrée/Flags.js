@@ -17,7 +17,7 @@ const CoreUIIcons = () => {
         }
       );
 
-      console.log(response)
+      //console.log(response)
       setOrderData(response.data.orders);
 
     }

@@ -66,9 +66,9 @@ const Parteners = () => {
           }
         }
       );
-      console.log(response)
+      //console.log(response)
       setPartenersData(response.data.partners);
-      console.log(partenersData)
+      //console.log(partenersData)
     }
     onGetAllParteners()
   }, [])

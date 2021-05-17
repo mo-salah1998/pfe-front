@@ -1,11 +1,30 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {CCard, CCardBody, CCardGroup, CCardHeader, CCol, CRow, CWidgetProgressIcon} from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import {CChartBar, CChartPie} from "@coreui/react-chartjs";
-
+import axios from "axios";
 
 const Breadcrumbs = () => {
-  return (<>
+  let [statData, SetStatData] = useState([]);
+
+  useEffect(() => {
+    const onGetClient = async () => {
+      const response = await axios.get('/api/statistique', {
+          headers: {
+            //Authorization: 'Bearer ' + Token.jwtToken
+          }
+        }
+      );
+
+      //console.log(response)
+      SetStatData(response.data);
+      // console.log(UsersData);
+    }
+    onGetClient()
+    //console.log(UsersData)
+  }, [])
+  return (
+    <>
       <CCard>
         <CCardHeader>
           Bar Chart
@@ -15,8 +34,8 @@ const Breadcrumbs = () => {
           <CRow>
             <CCol sm="6" md="2">
               <CWidgetProgressIcon
-                header="87.500"
-                text="Visitors"
+                header={statData.TotalClient}
+                text="Total Clients"
                 color="gradient-info"
                 inverse
               >
@@ -25,8 +44,8 @@ const Breadcrumbs = () => {
             </CCol>
             <CCol sm="6" md="2">
               <CWidgetProgressIcon
-                header="385"
-                text="New Clients"
+                header={statData.newClient}
+                text="Nouveaux Clients"
                 color="gradient-success"
                 inverse
               >
@@ -35,8 +54,8 @@ const Breadcrumbs = () => {
             </CCol>
             <CCol sm="6" md="2">
               <CWidgetProgressIcon
-                header="1238"
-                text="Products sold"
+                header={statData.nbProduitVendue}
+                text="Nombre Des Produits Vendue"
                 color="gradient-warning"
                 inverse
               >
@@ -45,8 +64,8 @@ const Breadcrumbs = () => {
             </CCol>
             <CCol sm="6" md="2">
               <CWidgetProgressIcon
-                header="28%"
-                text="Returning Visitors"
+                header={statData.nbProduitMoyPanier}
+                text="moy produits par pannier"
                 color="gradient-primary"
                 inverse
               >
@@ -55,8 +74,8 @@ const Breadcrumbs = () => {
             </CCol>
             <CCol sm="6" md="2">
               <CWidgetProgressIcon
-                header="5:34:11"
-                text="Avg. Time"
+                header={statData.avgTime}
+                text="Moy temps dans L'app"
                 color="gradient-danger"
                 inverse
               >
@@ -65,8 +84,8 @@ const Breadcrumbs = () => {
             </CCol>
             <CCol sm="6" md="2">
               <CWidgetProgressIcon
-                header="972"
-                text="comments"
+                header={statData.rate}
+                text="clients feedback"
                 color="gradient-info"
                 inverse
               >
@@ -80,7 +99,7 @@ const Breadcrumbs = () => {
       <CCardGroup columns className="cols-2">
         <CCard>
           <CCardHeader>
-            Bar Chart
+            Commande par moins
 
           </CCardHeader>
           <CCardBody>
@@ -88,9 +107,9 @@ const Breadcrumbs = () => {
             <CChartBar
               datasets={[
                 {
-                  label: 'GitHub Commits',
+                  label: 'Nombre de commande par moins',
                   backgroundColor: '#f87979',
-                  data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+                  data: statData.commandeParMois
                 }
               ]}
               labels="indexes"
@@ -102,12 +121,9 @@ const Breadcrumbs = () => {
           />
         </CCardBody>
       </CCard>
-
-
-
       <CCard>
         <CCardHeader>
-          Pie Chart
+          Les Commandes Par Categories
         </CCardHeader>
         <CCardBody>
           <CChartPie
@@ -119,10 +135,10 @@ const Breadcrumbs = () => {
                   '#00D8FF',
                   '#DD1B16'
                 ],
-                data: [40, 20, 80, 10]
+                data: statData.commandesParCategories
               }
             ]}
-            labels={['VueJs', 'EmberJs', 'ReactJs', 'AngularJs']}
+            labels={['Shopping', 'Food', 'Service']}
             options={{
               tooltips: {
                 enabled: true

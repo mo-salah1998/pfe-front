@@ -18,7 +18,7 @@ const Dashboard = () => {
           }
         }
       );
-      console.log(response)
+      //console.log(response)
       setDashboardData(response.data);
       //console.log(partenersData)
     }

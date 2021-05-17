@@ -2,7 +2,7 @@ import React from 'react';
 import orderAnnuler from "./views/order/orderAnnuler";
 import enCourDeTraitement from "./views/order/enCourDeTraitement";
 
-const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'));
+const Toaster = React.lazy(() => import('./views/parteners/toaster/Toaster'));
 const Tables = React.lazy(() => import('./views/base/tables/Tables'));
 
 const Breadcrumbs = React.lazy(() => import('./views/base/breadcrumbs/Breadcrumbs'));
@@ -31,9 +31,9 @@ const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
 const CoreUIIcons = React.lazy(() => import('./views/order/All-orders/CoreUIIcons'));
 const Flags = React.lazy(() => import('./views/order/Livrée/Flags'));
 const Brands = React.lazy(() => import('./views/order/enlevé/Brands'));
-const Alerts = React.lazy(() => import('./views/notifications/alerts/Parteners'));
-const Badges = React.lazy(() => import('./views/notifications/badges/Badges'));
-const Modals = React.lazy(() => import('./views/notifications/modals/Modals'));
+const Alerts = React.lazy(() => import('./views/parteners/alerts/Parteners'));
+const Badges = React.lazy(() => import('./views/parteners/badges/Badges'));
+const Modals = React.lazy(() => import('./views/parteners/modals/Modals'));
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'));
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'));
 const Clients = React.lazy(() => import('./views/clients/Clients'));
@@ -69,6 +69,7 @@ const routes = [
   {path: '/email/button-groups', name: 'Button Groups', component: ButtonGroups},
   {path: '/email/brand-email', name: 'Brand Buttons', component: BrandButtons},
   {path: '/charts', name: 'Charts', component: Charts},
+
 
   {path: '/order', exact: true, name: 'Order', component: CoreUIIcons},
   {path: '/order/all', name: 'All Orders', component: CoreUIIcons},
