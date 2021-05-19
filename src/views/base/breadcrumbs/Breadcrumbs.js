@@ -15,20 +15,15 @@ const Breadcrumbs = () => {
           }
         }
       );
-
-      //console.log(response)
       SetStatData(response.data);
-      // console.log(UsersData);
     }
     onGetClient()
-    //console.log(UsersData)
   }, [])
   return (
     <>
       <CCard>
         <CCardHeader>
-          Bar Chart
-
+          Statistiques
         </CCardHeader>
         <CCardBody>
           <CRow>

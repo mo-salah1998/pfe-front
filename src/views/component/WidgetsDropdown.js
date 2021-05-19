@@ -4,8 +4,7 @@ import ChartLineSimple from '../charts/ChartLineSimple'
 import ChartBarSimple from '../charts/ChartBarSimple'
 
 const WidgetsDropdown = ({data}) => {
-  // render
-  //console.log(data.email)
+
   return (
     <CRow>
 
@@ -21,7 +20,7 @@ const WidgetsDropdown = ({data}) => {
               style={{height: '70px'}}
               dataPoints={[65, 59, 84, 84, 51, 55, 40]}
               pointHoverBackgroundColor="primary"
-              label="Members"
+              label="Nombre de telechargement"
               labels="months"
             />
           }
@@ -29,12 +28,11 @@ const WidgetsDropdown = ({data}) => {
 
         </CWidgetDropdown>
       </CCol>
-
       <CCol sm="6" lg="3">
         <CWidgetDropdown
           color="gradient-info"
-          header="9.823"
-          text="Members online"
+          header={data.nbTelechargementparJour}
+          text="Nombre de Telechargementr aujourd'hui"
           footerSlot={
             <ChartLineSimple
               pointed
@@ -43,7 +41,7 @@ const WidgetsDropdown = ({data}) => {
               dataPoints={[1, 18, 9, 17, 34, 22, 11]}
               pointHoverBackgroundColor="info"
               options={{elements: {line: {tension: 0.00001}}}}
-              label="Members"
+              label="today download"
               labels="months"
             />
           }

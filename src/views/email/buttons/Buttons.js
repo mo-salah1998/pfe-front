@@ -14,8 +14,6 @@ import {
   Label,
   Row
 } from 'reactstrap';
-
-
 import {CButton, CCard, CCardBody, CCardHeader,} from '@coreui/react'
 import axios from "axios";
 
@@ -33,6 +31,7 @@ class Buttons extends Component {
       body: '',
     };
   }
+
 
   handleCHange = input => e => {
     this.setState({[input]: e.target.value});
@@ -62,18 +61,22 @@ class Buttons extends Component {
 
         if (response.status === 200) {
           console.log('email envouyer avec success');
+          alert("Mail envoyer avec success ");
+
           // addToast('success' , {
           //   appearance: 'success',
           //   autoDismiss: true,
           // });
+
         }
       })
       .catch(function (error) {
 
         console.log(error);
-        addToast("error ", {
-          appearance: "error", autoDismiss: true,
-        });
+        alert("error : Mail n'été pas envoyer ");
+        // addToast("error ", {
+        //   appearance: "error", autoDismiss: true,
+        // });
       });
   }
 

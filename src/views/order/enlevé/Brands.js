@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {CButton, CCard, CCardBody, CCardHeader, CCol, CCollapse, CDataTable, CRow} from '@coreui/react'
+import {CButton, CCard, CCardBody, CCardHeader, CCol, CCollapse, CDataTable, CRow, CSpinner} from '@coreui/react'
 import axios from "axios";
 
 
@@ -10,7 +10,7 @@ const CoreUIIcons = () => {
     const onGetClient = async () => {
       const response = await axios.get('/api/order/type', {
           params: {
-            status: 'enlevé'
+            status: 'taked'
           },
 
           headers: {
@@ -38,14 +38,14 @@ const CoreUIIcons = () => {
   }
   const [details, setDetails] = useState([])
   const fields = [
-    {key: '_id', label: 'Commande id', _style: {width: '20%'}},
+    {key: '_id', label: 'Commande id', _style: {width: '20%'}, filter: false},
     {key: 'client._id', label: 'Client', _style: {width: '20%'}},
     {key: 'partner.partnerName', label: 'livreur', _style: {width: '20%'}},
     {key: 'price', label: 'Prix', _style: {width: '20%'}},
 
     {
       key: 'show_details',
-      label: '',
+      label: 'Actions',
       _style: {width: '1%'},
       sorter: false,
       filter: false
@@ -56,22 +56,16 @@ const CoreUIIcons = () => {
       _style: {width: '1%'},
       sorter: false,
       filter: false
+    },
+    {
+      key: 'Annuler',
+      label: '',
+      _style: {width: '1%'},
+      sorter: false,
+      filter: false
     }
   ]
-  const getBadge = status => {
-    switch (status) {
-      case 'Active':
-        return 'success'
-      case 'Inactive':
-        return 'secondary'
-      case 'Pending':
-        return 'warning'
-      case 'Banned':
-        return 'danger'
-      default:
-        return 'primary'
-    }
-  }
+
   return (
     <>
       <CRow>
@@ -97,7 +91,13 @@ const CoreUIIcons = () => {
                         hover
                         sorter
                         pagination
-
+                        noItemsViewSlot={<div className="text-center my-5">
+                          <CSpinner className="align-items-center"
+                                    color="primary"
+                                    style={{width: '3rem', height: '3rem', align: "center"}}
+                          />
+                        </div>
+                        }
                         scopedSlots={{
                           'client._id':
                             (item) => (
@@ -116,13 +116,32 @@ const CoreUIIcons = () => {
                                     shape="square"
                                     size="sm"
                                     onClick={async () => {
-
-                                      const response = await axios.patch('/api/order/preparedToTaked/' + item._id)
-
+                                      window.location.reload(true);
+                                      const response = await axios.patch('/api/order/TakedToLivred/' + item._id)
                                       //enCourDeTraitement(item._id)
                                     }}
                                   >
                                     Next
+                                  </CButton>
+                                </td>
+                              )
+                            },
+                          'Annuler':
+                            (item, index) => {
+                              return (
+                                <td className="py-2">
+                                  <CButton
+                                    color="danger"
+                                    variant="outline"
+                                    shape="square"
+                                    size="sm"
+                                    onClick={async () => {
+                                      window.location.reload(true);
+                                      //const response = await axios.patch('/api/order/TakedToLivred/' + item._id)
+                                      //enCourDeTraitement(item._id)
+                                    }}
+                                  >
+                                    <i className="cil-trash"></i>
                                   </CButton>
                                 </td>
                               )

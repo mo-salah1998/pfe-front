@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {CButton, CCard, CCardBody, CCardHeader, CCol, CCollapse, CDataTable, CRow} from "@coreui/react";
+import {CButton, CCard, CCardBody, CCardHeader, CCol, CCollapse, CDataTable, CRow, CSpinner} from "@coreui/react";
 
 const orderAnnuler = () => {
 
@@ -36,34 +36,21 @@ const orderAnnuler = () => {
   }
   const [details, setDetails] = useState([])
   const fields = [
-    {key: '_id', label: 'Commande id', _style: {width: '20%'}},
+    {key: '_id', label: 'Commande id', _style: {width: '20%'}, filter: false},
     {key: 'client._id', label: 'Client', _style: {width: '20%'}},
     {key: 'partner.partnerName', label: 'livreur', _style: {width: '20%'}},
     {key: 'price', label: 'Prix', _style: {width: '20%'}},
 
     {
       key: 'show_details',
-      label: '',
+      label: 'Actions',
       _style: {width: '1%'},
       sorter: false,
       filter: false
     },
 
   ]
-  const getBadge = status => {
-    switch (status) {
-      case 'Active':
-        return 'success'
-      case 'Inactive':
-        return 'secondary'
-      case 'Pending':
-        return 'warning'
-      case 'Banned':
-        return 'danger'
-      default:
-        return 'primary'
-    }
-  }
+
   return (
     <>
       <CRow>
@@ -90,7 +77,13 @@ const orderAnnuler = () => {
                         hover
                         sorter
                         pagination
-
+                        noItemsViewSlot={<div className="text-center my-5">
+                          <CSpinner className="align-items-center"
+                                    color="primary"
+                                    style={{width: '3rem', height: '3rem', align: "center"}}
+                          />
+                        </div>
+                        }
                         scopedSlots={{
                           'client._id':
                             (item) => (

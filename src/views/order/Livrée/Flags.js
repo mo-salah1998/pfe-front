@@ -36,33 +36,20 @@ const CoreUIIcons = () => {
   }
   const [details, setDetails] = useState([])
   const fields = [
-    {key: '_id', label: 'Commande id', _style: {width: '20%'}},
+    {key: '_id', label: 'Commande id', _style: {width: '20%'}, filter: false},
     {key: 'client._id', label: 'Client', _style: {width: '20%'}},
     {key: 'partner.partnerName', label: 'livreur', _style: {width: '20%'}},
     {key: 'price', label: 'Prix', _style: {width: '20%'}},
 
     {
       key: 'show_details',
-      label: '',
+      label: 'Actions',
       _style: {width: '1%'},
       sorter: false,
       filter: false
     }
   ]
-  const getBadge = status => {
-    switch (status) {
-      case 'Active':
-        return 'success'
-      case 'Inactive':
-        return 'secondary'
-      case 'Pending':
-        return 'warning'
-      case 'Banned':
-        return 'danger'
-      default:
-        return 'primary'
-    }
-  }
+
   return (
     <>
       <CRow>

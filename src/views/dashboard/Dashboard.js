@@ -3,8 +3,8 @@ import {CBadge, CCard, CCardBody, CCardHeader, CCol, CProgress, CRow} from '@cor
 import CIcon from '@coreui/icons-react'
 import axios from "axios";
 
-const WidgetsDropdown = lazy(() => import('../clients/WidgetsDropdown.js'))
-const WidgetsBrand = lazy(() => import('../clients/WidgetsBrand.js'))
+const WidgetsDropdown = lazy(() => import('../component/WidgetsDropdown.js'))
+const WidgetsBrand = lazy(() => import('../component/WidgetsBrand.js'))
 
 const Dashboard = () => {
   let [dashboardData, setDashboardData] = useState([]);
@@ -13,8 +13,8 @@ const Dashboard = () => {
   useEffect(() => {
     const getInfo = async () => {
       const response = await axios.get('/api/dashbord', {
-          headers: {
-            //Authorization: 'Bearer ' + Token.jwtToken
+        headers: {
+          //Authorization: 'Bearer ' + Token.jwtToken
           }
         }
       );
