@@ -12,6 +12,8 @@ const Collapses = React.lazy(() => import('./views/base/collapses/Collapses'));
 const BasicForms = React.lazy(() => import('./views/base/forms/BasicForms'));
 
 const Jumbotrons = React.lazy(() => import('./views/base/jumbotrons/Jumbotrons'));
+const profileSettings = React.lazy(() => import('./views/base/jumbotrons/avatarCard'));
+
 const ListGroups = React.lazy(() => import('./views/base/list-groups/ListGroups'));
 const Navbars = React.lazy(() => import('./views/base/navbars/Navbars'));
 const Navs = React.lazy(() => import('./views/base/navs/Navs'));
@@ -52,7 +54,7 @@ const routes = [
   {path: '/base/carousels', name: 'Carousel', component: Carousels},
   {path: '/base/collapses', name: 'Collapse', component: Collapses},
   {path: '/base/forms', name: 'Forms', component: BasicForms},
-  {path: '/base/jumbotrons', name: 'Jumbotrons', component: Jumbotrons},
+
   {path: '/base/list-groups', name: 'List Groups', component: ListGroups},
   {path: '/base/navbars', name: 'Navbars', component: Navbars},
   {path: '/base/navs', name: 'Navs', component: Navs},
@@ -63,6 +65,11 @@ const routes = [
   {path: '/base/tables', name: 'Tables', component: Tables},
   {path: '/base/tabs', name: 'Tabs', component: Tabs},
   {path: '/base/tooltips', name: 'Tooltips', component: Tooltips},
+
+
+  {path: '/profile', name: 'Profile', component: Jumbotrons, exact: true},
+  {path: '/profile/Settings', name: 'Settings', component: profileSettings},
+
   {path: '/email', name: 'Buttons', component: Buttons, exact: true},
   {path: '/email/email', name: 'Buttons', component: Buttons},
   {path: '/email/button-dropdowns', name: 'Dropdowns', component: ButtonDropdowns},

@@ -1,90 +1,73 @@
-import React, {useState} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {
-  CButton,
-  CCard,
-  CCardBody,
-  CCardGroup,
-  CCol,
-  CContainer,
-  CForm,
-  CInput,
-  CInputGroup,
-  CInputGroupPrepend,
-  CInputGroupText,
-  CRow
-} from '@coreui/react'
-import {DocsLink} from 'src/reusable'
-import CIcon from '@coreui/icons-react';
+import React, {useEffect, useState} from 'react';
+import {useSelector} from 'react-redux';
+import {CButton, CCard, CCardBody, CCardGroup, CCol, CContainer, CListGroup, CListGroupItem, CRow} from '@coreui/react'
+import {Col, Row} from "reactstrap";
+import axios from "axios";
 
 const Jumbotrons = () => {
-  const dispatch = useDispatch();
-  const usr = useSelector((state) => state.username)
-  const pwd = useSelector((state) => state.password)
+  let [AdminData, setAdminData] = useState([]);
+  const store = useSelector(state => state.auth);
+  useEffect(() => {
+    const getInfo = async () => {
+      const response = await axios.get('/api/profile/' + store.userID);
+      console.log(response)
+      setAdminData(response.data)
+    }
+    getInfo()
+  }, []);
 
-  const [username, setUsername] = useState(usr);
-  const [password, setPassword] = useState(pwd);
-  const [success, setSuccess] = useState(false);
-
-  const update = () => {
-    dispatch({type: 'updateProfile', username, password})
-    setSuccess(true)
-  }
   return (
-    <>
+    <div className='app flex-row animated fadeIn innerPagesBg'>
       <CContainer>
         <CRow className="justify-content-center">
-          <CCol md="8">
+          <CCol md="12">
             <CCardGroup>
               <CCard className="p-4 userDetails ">
                 <CCardBody>
-                  <CForm>
-                    <h1>Profile</h1>
-                    <p className="text-muted">Update your profile</p>
-                    <CInputGroup className="mb-3">
-                      <CInputGroupPrepend>
-                        <CInputGroupText>
-                          <CIcon name="cil-user"/>
-                        </CInputGroupText>
-                      </CInputGroupPrepend>
-                      <CInput
-                        type="text"
-                        placeholder="Username"
-                        autoComplete="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                  <Row>
+                    <Col className="p-4">
+                      <h2>Profile</h2>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col sm={{size: 1, order: 1, offset: 1}}>
+                      <img
+                        alt=''
+                        className=''
+                        style={{height: "170px", width: "170px"}}
+                        src={AdminData.photo}
                       />
-                    </CInputGroup>
-                    <CInputGroup className="mb-4">
-                      <CInputGroupPrepend>
-                        <CInputGroupText>
-                          <CIcon name="cil-lock-locked"/>
-                        </CInputGroupText>
-                      </CInputGroupPrepend>
-                      <CInput
-                        type="password"
-                        placeholder="Password"
-                        autoComplete="current-password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </CInputGroup>
-                    {success && <p className='text-success'>Profile updated successfuly</p>}
-                    <CRow>
-                      <CCol xs="6">
-                        <CButton color="primary" className="px-4" onClick={update}>
-                          Update
-                        </CButton>
-                      </CCol>
-                    </CRow>
-                  </CForm>
+                    </Col>
+                    <Col sm={{size: 8, order: 1, offset: 1}} style={{paddingLeft: 80}}>
+                      <CListGroup>
+                        <CListGroupItem><h5>Prénom : </h5><h5>{AdminData.firstName}</h5></CListGroupItem>
+                        <CListGroupItem><h5>Nom : </h5><h5>{AdminData.lastName}</h5></CListGroupItem>
+                        <CListGroupItem><h5>Adresse Email :</h5><h5> {AdminData.email}</h5></CListGroupItem>
+                        <CListGroupItem><h5>Numéro de téléphone :</h5><h5> {AdminData.phone} </h5></CListGroupItem>
+                      </CListGroup>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+
+                    </Col>
+                  </Row>
+                  <Row xs="4" style={{paddingTop: 20}}>
+                    <Col xs="8">
+
+                    </Col>
+                    <Col>
+                      <CButton block variant="outline" color="info" to="/profile/Settings">Modifier</CButton>
+                    </Col>
+                  </Row>
                 </CCardBody>
               </CCard>
             </CCardGroup>
           </CCol>
         </CRow>
+
       </CContainer>
-    </>
+    </div>
   )
 }
 

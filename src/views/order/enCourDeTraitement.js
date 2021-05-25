@@ -56,6 +56,13 @@ const enCourDeTraitement = () => {
       _style: {width: '1%'},
       sorter: false,
       filter: false
+    },
+    {
+      key: 'Annuler',
+      label: '',
+      _style: {width: '1%'},
+      sorter: false,
+      filter: false
     }
   ]
 
@@ -106,6 +113,26 @@ const enCourDeTraitement = () => {
                               </td>
 
                             ),
+                          'Annuler':
+                            (item, index) => {
+                              return (
+                                <td className="py-2">
+                                  <CButton
+                                    color="danger"
+                                    variant="outline"
+                                    shape="square"
+                                    size="sm"
+                                    onClick={async () => {
+                                      window.location.reload(true);
+                                      //const response = await axios.patch('/api/order/TakedToLivred/' + item._id)
+                                      //enCourDeTraitement(item._id)
+                                    }}
+                                  >
+                                    <i className="cil-trash"></i>
+                                  </CButton>
+                                </td>
+                              )
+                            },
                           'show_details':
                             (item, index) => {
                               return (

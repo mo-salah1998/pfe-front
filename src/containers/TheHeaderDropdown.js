@@ -1,14 +1,6 @@
 import React from 'react'
-import {
-  CBadge,
-  CDropdown,
-  CDropdownItem,
-  CDropdownMenu,
-  CDropdownToggle,
-  CImg,
-} from '@coreui/react'
+import {CBadge, CDropdown, CDropdownItem, CDropdownMenu, CDropdownToggle, CImg,} from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import {Link} from "react-router-dom";
 
 const TheHeaderDropdown = () => {
   return (
@@ -43,7 +35,7 @@ const TheHeaderDropdown = () => {
           <CBadge color="success" className="mfs-auto">42</CBadge>
         </CDropdownItem>
 
-        <CDropdownItem to='/base/jumbotrons'>
+        <CDropdownItem to='/profile'>
 
           <CIcon name="cil-user" className="mfe-2"/>Profile
 

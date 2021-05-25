@@ -24,8 +24,10 @@ class Buttons extends Component {
 
 
     this.toggle = this.toggle.bind(this);
+
     this.state = {
       dropdownOpen: false,
+      redirect: null,
       email: '',
       object: '',
       body: '',
@@ -63,6 +65,7 @@ class Buttons extends Component {
           console.log('email envouyer avec success');
           alert("Mail envoyer avec success ");
 
+          
           // addToast('success' , {
           //   appearance: 'success',
           //   autoDismiss: true,
@@ -73,7 +76,7 @@ class Buttons extends Component {
       .catch(function (error) {
 
         console.log(error);
-        alert("error : Mail n'été pas envoyer ");
+        //alert("error : Mail n'été pas envoyer ");
         // addToast("error ", {
         //   appearance: "error", autoDismiss: true,
         // });
