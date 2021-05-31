@@ -17,15 +17,6 @@ const _nav = [
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'L\'historique des Actions',
-    icon: 'cil-pencil',
-    'disabled': true,
-    addLinkClass: 'c-disabled',
-
-  },
-
-  {
-    _tag: 'CSidebarNavItem',
     name: 'Statistique',
     to: '/base/breadcrumbs',
     icon: 'cil-chart-pie',
@@ -45,13 +36,13 @@ const _nav = [
       {
         _tag: 'CSidebarNavItem',
         name: 'Inbox',
-        to: '/email/brand-email',
+        to: '/email/inbox',
         icon: 'cil-inbox'
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Sent',
-        to: '/email/button-groups',
+        to: '/email/sents',
         icon: "cil-share-boxed"
       }
 

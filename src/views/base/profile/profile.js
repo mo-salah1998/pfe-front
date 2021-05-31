@@ -4,7 +4,7 @@ import {CButton, CCard, CCardBody, CCardGroup, CCol, CContainer, CListGroup, CLi
 import {Col, Row} from "reactstrap";
 import axios from "axios";
 
-const Jumbotrons = () => {
+const Profile = () => {
   let [AdminData, setAdminData] = useState([]);
   const store = useSelector(state => state.auth);
   useEffect(() => {
@@ -71,4 +71,4 @@ const Jumbotrons = () => {
   )
 }
 
-export default Jumbotrons
+export default Profile

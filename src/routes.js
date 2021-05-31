@@ -1,6 +1,8 @@
 import React from 'react';
 import orderAnnuler from "./views/order/orderAnnuler";
 import enCourDeTraitement from "./views/order/enCourDeTraitement";
+import Profile from "./views/base/profile/profile";
+import Sends from "./views/email/email sends/sends";
 
 const Toaster = React.lazy(() => import('./views/parteners/toaster/Toaster'));
 const Tables = React.lazy(() => import('./views/base/tables/Tables'));
@@ -11,8 +13,8 @@ const Carousels = React.lazy(() => import('./views/base/carousels/Carousels'));
 const Collapses = React.lazy(() => import('./views/base/collapses/Collapses'));
 const BasicForms = React.lazy(() => import('./views/base/forms/BasicForms'));
 
-const Jumbotrons = React.lazy(() => import('./views/base/jumbotrons/Jumbotrons'));
-const profileSettings = React.lazy(() => import('./views/base/jumbotrons/avatarCard'));
+const Jumbotrons = React.lazy(() => import('./views/base/profile/profile'));
+const profileSettings = React.lazy(() => import('./views/base/profile/avatarCard'));
 
 const ListGroups = React.lazy(() => import('./views/base/list-groups/ListGroups'));
 const Navbars = React.lazy(() => import('./views/base/navbars/Navbars'));
@@ -24,9 +26,9 @@ const Switches = React.lazy(() => import('./views/base/switches/Switches'));
 
 const Tabs = React.lazy(() => import('./views/base/tabs/Tabs'));
 const Tooltips = React.lazy(() => import('./views/base/tooltips/Tooltips'));
-const BrandButtons = React.lazy(() => import('./views/email/brand-buttons/BrandButtons'));
+const BrandButtons = React.lazy(() => import('./views/email/email_inbox/BrandButtons'));
 const ButtonDropdowns = React.lazy(() => import('./views/email/button-dropdowns/ButtonDropdowns'));
-const ButtonGroups = React.lazy(() => import('./views/email/button-groups/ButtonGroups'));
+const ButtonGroups = React.lazy(() => import('./views/email/email sends/sends'));
 const Buttons = React.lazy(() => import('./views/email/buttons/Buttons'));
 const Charts = React.lazy(() => import('./views/charts/Charts'));
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
@@ -67,14 +69,14 @@ const routes = [
   {path: '/base/tooltips', name: 'Tooltips', component: Tooltips},
 
 
-  {path: '/profile', name: 'Profile', component: Jumbotrons, exact: true},
+  {path: '/profile', name: 'Profile', component: Profile, exact: true},
   {path: '/profile/Settings', name: 'Settings', component: profileSettings},
 
   {path: '/email', name: 'Buttons', component: Buttons, exact: true},
   {path: '/email/email', name: 'Buttons', component: Buttons},
   {path: '/email/button-dropdowns', name: 'Dropdowns', component: ButtonDropdowns},
-  {path: '/email/button-groups', name: 'Button Groups', component: ButtonGroups},
-  {path: '/email/brand-email', name: 'Brand Buttons', component: BrandButtons},
+  {path: '/email/sents', name: 'Sends', component: Sends},
+  {path: '/email/inbox', name: 'Brand Buttons', component: BrandButtons},
   {path: '/charts', name: 'Charts', component: Charts},
 
 

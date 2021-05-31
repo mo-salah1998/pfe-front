@@ -1,5 +1,5 @@
 import ButtonDropdowns from './ButtonDropdowns'
-import ButtonGroups from './ButtonGroups'
+import ButtonGroups from './Sends'
 import Buttons from './Buttons'
 import BrandButtons from './BrandButtons'
 

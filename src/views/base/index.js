@@ -3,7 +3,7 @@ import Cards from './Cards';
 import Carousels from './Carousels';
 import Collapses from './Collapses';
 import Dropdowns from './Dropdowns';
-import Jumbotrons from './Jumbotrons';
+import Jumbotrons from './Profile';
 import ListGroups from './ListGroups';
 import Navbars from './Navbars';
 import Navs from './Navs';

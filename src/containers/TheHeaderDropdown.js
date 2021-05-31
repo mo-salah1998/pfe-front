@@ -1,5 +1,5 @@
 import React from 'react'
-import {CBadge, CDropdown, CDropdownItem, CDropdownMenu, CDropdownToggle, CImg,} from '@coreui/react'
+import {CBadge, CDropdown, CDropdownItem, CDropdownMenu, CDropdownToggle, CImg} from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
 const TheHeaderDropdown = () => {
@@ -36,14 +36,14 @@ const TheHeaderDropdown = () => {
         </CDropdownItem>
 
         <CDropdownItem to='/profile'>
-
           <CIcon name="cil-user" className="mfe-2"/>Profile
-
         </CDropdownItem>
 
-        <CDropdownItem>
+        <CDropdownItem to='/profile/Settings'>
+
           <CIcon name="cil-settings" className="mfe-2"/>
           Settings
+
         </CDropdownItem>
         <CDropdownItem divider/>
         <CDropdownItem to='/login'>

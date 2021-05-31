@@ -1,7 +1,7 @@
 import React from 'react'
 import {CCard, CCardBody, CCardHeader, CCol, CRow} from '@coreui/react'
 
-const ButtonGroups = () => {
+const Sends = () => {
   return (
     <CRow>
       <CCol md="12">
@@ -23,4 +23,4 @@ const ButtonGroups = () => {
   )
 }
 
-export default ButtonGroups
+export default Sends
