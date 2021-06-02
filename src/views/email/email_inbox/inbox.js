@@ -1,7 +1,7 @@
 import React from 'react'
 import {CCard, CCardBody, CCardHeader, CCol, CRow} from '@coreui/react'
 
-const BrandButtons = () => {
+const Inbox = () => {
   return (
     <CRow>
       <CCol xs="12">
@@ -24,4 +24,4 @@ const BrandButtons = () => {
   )
 }
 
-export default BrandButtons
+export default Inbox

@@ -3,11 +3,14 @@ import orderAnnuler from "./views/order/orderAnnuler";
 import enCourDeTraitement from "./views/order/enCourDeTraitement";
 import Profile from "./views/base/profile/profile";
 import Sends from "./views/email/email sends/sends";
+import Inbox from "./views/email/email_inbox/inbox";
+import NewEmail from "./views/email/new email/newEmail";
+import Statistique from "./views/base/Statistique/statistique";
 
 const Toaster = React.lazy(() => import('./views/parteners/toaster/Toaster'));
 const Tables = React.lazy(() => import('./views/base/tables/Tables'));
 
-const Breadcrumbs = React.lazy(() => import('./views/base/breadcrumbs/Breadcrumbs'));
+const Breadcrumbs = React.lazy(() => import('./views/base/Statistique/statistique'));
 const Cards = React.lazy(() => import('./views/base/cards/Cards'));
 const Carousels = React.lazy(() => import('./views/base/carousels/Carousels'));
 const Collapses = React.lazy(() => import('./views/base/collapses/Collapses'));
@@ -26,10 +29,10 @@ const Switches = React.lazy(() => import('./views/base/switches/Switches'));
 
 const Tabs = React.lazy(() => import('./views/base/tabs/Tabs'));
 const Tooltips = React.lazy(() => import('./views/base/tooltips/Tooltips'));
-const BrandButtons = React.lazy(() => import('./views/email/email_inbox/BrandButtons'));
+const BrandButtons = React.lazy(() => import('./views/email/email_inbox/inbox'));
 const ButtonDropdowns = React.lazy(() => import('./views/email/button-dropdowns/ButtonDropdowns'));
 const ButtonGroups = React.lazy(() => import('./views/email/email sends/sends'));
-const Buttons = React.lazy(() => import('./views/email/buttons/Buttons'));
+const Buttons = React.lazy(() => import('./views/email/new email/newEmail'));
 const Charts = React.lazy(() => import('./views/charts/Charts'));
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
 const CoreUIIcons = React.lazy(() => import('./views/order/All-orders/CoreUIIcons'));
@@ -51,7 +54,7 @@ const routes = [
   {path: '/theme/colors', name: 'Colors', component: Colors},
   {path: '/theme/typography', name: 'Typography', component: Typography},
   {path: '/base', name: 'Base', component: Cards, exact: true},
-  {path: '/base/breadcrumbs', name: 'Breadcrumbs', component: Breadcrumbs},
+  {path: '/statistique', name: 'Statistique', component: Statistique},
   {path: '/base/cards', name: 'Cards', component: Cards},
   {path: '/base/carousels', name: 'Carousel', component: Carousels},
   {path: '/base/collapses', name: 'Collapse', component: Collapses},
@@ -72,11 +75,11 @@ const routes = [
   {path: '/profile', name: 'Profile', component: Profile, exact: true},
   {path: '/profile/Settings', name: 'Settings', component: profileSettings},
 
-  {path: '/email', name: 'Buttons', component: Buttons, exact: true},
-  {path: '/email/email', name: 'Buttons', component: Buttons},
+  {path: '/email', name: 'Email', component: NewEmail, exact: true},
+  {path: '/email/email', name: 'Nouveaux', component: NewEmail},
   {path: '/email/button-dropdowns', name: 'Dropdowns', component: ButtonDropdowns},
   {path: '/email/sents', name: 'Sends', component: Sends},
-  {path: '/email/inbox', name: 'Brand Buttons', component: BrandButtons},
+  {path: '/email/inbox', name: 'Inbox', component: Inbox},
   {path: '/charts', name: 'Charts', component: Charts},
 
 

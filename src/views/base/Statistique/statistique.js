@@ -4,7 +4,7 @@ import CIcon from '@coreui/icons-react'
 import {CChartBar, CChartPie} from "@coreui/react-chartjs";
 import axios from "axios";
 
-const Breadcrumbs = () => {
+const Statistique = () => {
   let [statData, SetStatData] = useState([]);
 
   useEffect(() => {
@@ -150,4 +150,4 @@ const Breadcrumbs = () => {
 }
 
 
-export default Breadcrumbs
+export default Statistique

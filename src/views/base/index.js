@@ -1,4 +1,4 @@
-import Breadcrumbs from './Breadcrumbs';
+import Breadcrumbs from './Statistique';
 import Cards from './Cards';
 import Carousels from './Carousels';
 import Collapses from './Collapses';

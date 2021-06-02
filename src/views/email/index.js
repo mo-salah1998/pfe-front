@@ -1,7 +1,7 @@
 import ButtonDropdowns from './ButtonDropdowns'
 import ButtonGroups from './Sends'
-import Buttons from './Buttons'
-import BrandButtons from './BrandButtons'
+import Buttons from './NewEmail'
+import BrandButtons from './Inbox'
 
 export {
   ButtonDropdowns, ButtonGroups, Buttons, BrandButtons

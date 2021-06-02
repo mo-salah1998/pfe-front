@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 > 14 December 2020
 
-- fix(BrandButtons): minor temp fixes with
+- fix(Inbox): minor temp fixes with
   stylings [`f0c0585`](https://github.com/coreui/coreui-free-react-admin-template/commit/f0c05858329430c9487bdcfcf36d0aa98f60776d)
 - refactor: polyfills
   cleanup [`9522ade`](https://github.com/coreui/coreui-free-react-admin-template/commit/9522ade1f1eb2c5a26d5208fe6e44be803123bd2)

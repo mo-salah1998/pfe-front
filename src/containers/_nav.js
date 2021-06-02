@@ -18,7 +18,7 @@ const _nav = [
   {
     _tag: 'CSidebarNavItem',
     name: 'Statistique',
-    to: '/base/breadcrumbs',
+    to: '/statistique',
     icon: 'cil-chart-pie',
   },
   {

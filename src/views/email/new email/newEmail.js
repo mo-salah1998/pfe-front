@@ -17,7 +17,7 @@ import {
 import {CButton, CCard, CCardBody, CCardHeader,} from '@coreui/react'
 import axios from "axios";
 
-class Buttons extends Component {
+class NewEmail extends Component {
 
   constructor(props) {
     super(props);
@@ -65,7 +65,7 @@ class Buttons extends Component {
           console.log('email envouyer avec success');
           alert("Mail envoyer avec success ");
 
-          
+
           // addToast('success' , {
           //   appearance: 'success',
           //   autoDismiss: true,
@@ -174,4 +174,4 @@ class Buttons extends Component {
   }
 }
 
-export default Buttons
+export default NewEmail

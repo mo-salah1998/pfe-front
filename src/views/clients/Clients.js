@@ -13,7 +13,7 @@ import {
 } from '@coreui/react'
 import axios from "axios";
 import {useSelector} from "react-redux";
-
+import ReactGoogleMaps from "../googleMap/GoogleMaps";
 
 const Clients = () => {
 
@@ -74,6 +74,11 @@ const Clients = () => {
       filter: false
     }
   ]
+  const apiKey = 'AIzaSyAAeLv1dDrfhbW2zwDcNkmQh7YJTg3iH7s'
+
+  const defaultZoom = 11;
+  const defaultCenter = {lat: 37.431489, lng: -122.163719};
+
   const getBadge = status => {
     switch (status) {
       case 'Active':
@@ -155,13 +160,7 @@ const Clients = () => {
                             <h4>
                               {item.username}
                             </h4>
-                            <p className="text-muted">User since: {item.registered}</p>
-                            <CButton size="sm" color="info">
-                              User Settings
-                            </CButton>
-                            <CButton size="sm" color="danger" className="ml-1">
-                              Delete
-                            </CButton>
+                            <ReactGoogleMaps/>
                           </CCardBody>
                         </CCollapse>
                       )
